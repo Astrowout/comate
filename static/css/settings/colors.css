@@ -1,0 +1,10 @@
+:root {
+	--primary-color-dark: #1D2129;
+	--primary-color-light: #203254;
+	--highlight-color: #9ec0ff;
+	--alternate-color: #4E85F0;
+	--alternate-color-faded: rgba(78, 133, 240, 0.2);
+	--alternate-color-interactive: #3a6ed6;
+	--silver-color: #F5F7FA;
+	--silver-color-faded: rgba(245, 247, 250, 0.5);
+}

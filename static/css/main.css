@@ -1,0 +1,7 @@
+@import './vendors/normalize.css';
+
+@import './settings/colors.css';
+
+@import './base/page.css';
+
+@import './utils/icon.css';

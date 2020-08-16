@@ -1,0 +1,18 @@
+{
+  "appId": "comate.app",
+  "appName": "comate",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "__sapper__/export",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1000,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#203254"
+    }
+  },
+  "cordova": {}
+}

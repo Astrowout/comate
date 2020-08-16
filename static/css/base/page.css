@@ -1,0 +1,40 @@
+:root {
+	--border-radius-rounded: 999px;
+	--progress-width: 8;
+}
+
+:root {
+	height: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	line-height: 1.5;
+
+	color: var(--silver-color);
+	background: linear-gradient(150deg, var(--primary-color-light) 0%, var(--primary-color-dark) 100%);
+	background-repeat: no-repeat;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body,
+main {
+	height: 100%;
+}
+
+h1,
+p {
+	margin: 0;
+}
+
+button {
+	border: none;
+	outline: none;
+	background: none;
+	appearance: none;
+	padding: 0;
+}
