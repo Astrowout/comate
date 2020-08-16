@@ -7,7 +7,7 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { elasticOut } from 'svelte/easing';
 	import { Plugins } from '@capacitor/core';
-	import { Button, Icon, AudioPlayer } from '../components';
+	import { Button, Icon, AudioPlayer, Modal } from '../components';
 	import { elapsedTime, hours, minutes, seconds } from '../store/timer.js';
 	import { progress, progressBackground } from '../hooks/progress.js';
 	import sounds from '../data/sounds.js';
@@ -16,6 +16,9 @@
 
 	let timer = null;
 	let devMode = false;
+	let showModal = false;
+	let activeSound = 0;
+	let alarm = false;
 
 	$: elapsedTime.reset(devMode);
 
@@ -24,6 +27,8 @@
 	});
 
 	const handleStart = () => {
+		alarm = false;
+
 		timer = setInterval(() => {
 			elapsedTime.update(time => time - 1000);
 
@@ -45,11 +50,9 @@
 			]
 		});
 
-		audio.play();
+		alarm = true;
 
 		Haptics.vibrate();
-
-		console.log('play sound');
 	}
 
 	const handleReset = () => {
@@ -151,15 +154,15 @@
 		</span>
 
 		<div class="audio">
-			{#each sounds as sound}
-				<AudioPlayer
-					{...sound}
-				>
-				</AudioPlayer>
-			{/each}
+			<AudioPlayer
+				{...sounds[activeSound]}
+				playing={alarm}
+			>
+			</AudioPlayer>
 
 			<button
 				class="audio__button"
+				on:click={() => showModal = true}
 			>
 				<Icon
 					src="/audio.svg"
@@ -199,6 +202,24 @@
 		</div>
 	{/if}
 </main>
+
+<Modal
+	title="Pick a song"
+	on:close="{() => showModal = false}"
+	isOpen={showModal}
+>
+	{#each sounds as sound, i}
+		<AudioPlayer
+			inverted
+			{...sound}
+			on:click={() => {
+				activeSound = i;
+				showModal = false;
+			}}
+		>
+		</AudioPlayer>
+	{/each}
+</Modal>
 
 <style>
 	.root {
@@ -293,7 +314,7 @@
 	.audio__button {
 		width: 30px;
 		height: 30px;
-		margin-left: 10px;
+		margin-left: 15px;
 
 		display: flex;
 		justify-content: center;
