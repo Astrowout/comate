@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "sapper dev --no-hot",
-    "build:web": "sapper export",
+    "build:web": "sapper export && vercel",
     "build:android": "sapper export && npx cap copy && npx cap open android"
   },
   "dependencies": {
