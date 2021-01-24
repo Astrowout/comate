@@ -9,8 +9,6 @@
 	onMount(() => {
 		StatusBar.hide();
 	});
-
-
 </script>
 
 <slot {segment}></slot>

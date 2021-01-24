@@ -75,7 +75,7 @@
 <main class="root">
 	<header
 		class="header"
-		in:fly={{opacity: 0, y: -50, easing: elasticOut, duration: 1000, delay: 950}}
+		in:fly={{opacity: 0, y: -50, easing: elasticOut, duration: 1000, delay: 1100}}
 	>
 		<a
 			href="/"
